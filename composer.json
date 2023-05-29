@@ -1,0 +1,43 @@
+{
+  "name": "amoreno/prompt-classes",
+  "description": "ChatGpt reusable objects",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "PromptClasses\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PromptClasses\\Test\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Angel S. Moreno",
+      "email": "angelxmoreno@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.7",
+    "phpmd/phpmd": "^2.13",
+    "kahlan/kahlan": "^5.2"
+  },
+  "scripts": {
+    "test": "kahlan",
+    "coverage": "kahlan --coverage",
+    "check": [
+      "@test",
+      "@cs-check",
+      "@md-check"
+    ],
+    "cs-check": "phpcs",
+    "cs-fix": "phpcbf",
+    "md-check": "phpmd src text ruleset"
+  }
+}

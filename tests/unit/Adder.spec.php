@@ -11,5 +11,3 @@ describe(Adder::class, function () {
         });
     });
 });
-
-// `'dot'`, `'bar'`, `'json'`, `'tap'`, `'tree'` & `'verbose'` (default: `'dot'`).

@@ -31,14 +31,14 @@
   "scripts": {
     "test": "kahlan",
     "coverage": "kahlan --coverage=4",
-    "test-ci": "kahlan --coverage=1 --clover=coverage.xml --reporter=tap",
+    "test-ci": "kahlan --coverage --clover=coverage.xml",
     "check": [
       "@cs-check",
       "@md-check"
     ],
     "cs-check": "phpcs",
     "cs-fix": "phpcbf",
-    "md-check": "phpmd src text ruleset",
+    "md-check": "phpmd src,tests,docs text ruleset",
     "docs:serve": "mkdocs serve",
     "docs:build": "mkdocs build && open site/index.html"
   }

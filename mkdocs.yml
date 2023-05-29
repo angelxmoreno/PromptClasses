@@ -1,0 +1,10 @@
+site_name: PromptClasses
+theme: litera
+
+nav:
+  - Home: index.md
+  - about.md
+  - installation.md
+  - configuration.md
+  - testing.md
+  - support.md

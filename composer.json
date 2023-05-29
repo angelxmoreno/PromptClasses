@@ -33,7 +33,6 @@
     "coverage": "kahlan --coverage=4",
     "test-ci": "kahlan --coverage=1 --clover=coverage.xml --reporter=tap",
     "check": [
-      "@test",
       "@cs-check",
       "@md-check"
     ],

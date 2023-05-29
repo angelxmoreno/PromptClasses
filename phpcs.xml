@@ -9,9 +9,7 @@
     <file>./src</file>
     <file>./tests</file>
 
-    <exclude-pattern>*/webroot/coverage/*</exclude-pattern>
     <exclude-pattern>*/docs/build/*</exclude-pattern>
-    <exclude-pattern>*/config/Migrations/*</exclude-pattern>
 
     <rule ref="PSR12">
         <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>

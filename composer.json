@@ -31,6 +31,7 @@
   "scripts": {
     "test": "kahlan",
     "coverage": "kahlan --coverage",
+    "test-ci": "kahlan --coverage --clover=coverage.xml",
     "check": [
       "@test",
       "@cs-check",

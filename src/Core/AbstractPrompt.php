@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
+ */
+
 declare(strict_types=1);
 
 namespace PromptClasses\Core;
@@ -12,23 +19,20 @@ use UnexpectedValueException;
 
 abstract class AbstractPrompt
 {
-    protected string $open_api_key;
+    protected string $openaiApiKey;
 
-    protected ?OpenAi $openAi = null;
+    protected ?OpenAi $openaiClient = null;
 
     protected string $promptTpl = '';
     protected array $promptParams = [];
-    protected array $openaiParams = [
+    protected array $openAIParams = [
         'model' => 'gpt-3.5-turbo',
         'temperature' => 1.0,
-        'max_tokens' => 4000,
-        'frequency_penalty' => 0,
-        'presence_penalty' => 0,
     ];
 
-    public function __construct(string $openApiKey)
+    public function __construct(string $openaiApiKey)
     {
-        $this->open_api_key = $openApiKey;
+        $this->openaiApiKey = $openaiApiKey;
         $this->assertTrueOrThrow(is_string($this->getPromptTpl()), '"$promptTpl" must be a string');
         $this->assertTrueOrThrow(trim($this->getPromptTpl()) <> '', '"$promptTpl" can not be empty');
         $this->assertTrueOrThrow(!empty($this->getPromptParams()), '"$promptParams" can not be empty');
@@ -66,12 +70,12 @@ abstract class AbstractPrompt
      */
     protected function sendToOpenAI(string $prompt): ?string
     {
-        $params = $this->openaiParams;
+        $params = $this->openAIParams;
 
         $params['messages'] = [
             ['role' => 'user', 'content' => $prompt],
         ];
-        $response = $this->callOpenApi($params);
+        $response = $this->callOpenAI($params);
 
         return Hash::get($response, 'choices.0.message.content');
     }
@@ -79,9 +83,9 @@ abstract class AbstractPrompt
     /**
      * @throws Exception
      */
-    protected function callOpenApi(array $params): array
+    protected function callOpenAI(array $params): array
     {
-        $responseJson = $this->getOpenAi()->chat($params);
+        $responseJson = $this->getOpenaiClient()->chat($params);
         return json_decode($responseJson, true);
     }
 
@@ -97,11 +101,11 @@ abstract class AbstractPrompt
         return array_combine($this->getPromptParams(), $args);
     }
 
-    protected function getOpenAi(): ?OpenAi
+    protected function getOpenaiClient(): ?OpenAi
     {
-        if (is_null($this->openAi)) {
-            $this->openAi = new OpenAi($this->open_api_key);
+        if (is_null($this->openaiClient)) {
+            $this->openaiClient = new OpenAi($this->openaiApiKey);
         }
-        return $this->openAi;
+        return $this->openaiClient;
     }
 }

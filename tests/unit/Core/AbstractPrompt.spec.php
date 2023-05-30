@@ -27,7 +27,7 @@ describe(AbstractPrompt::class, function () {
             $prompter = new HelloPrompt('');
 
             allow($prompter)
-                ->toReceive('callOpenApi')
+                ->toReceive('callOpenAI')
                 ->andReturn(Fixture::load('openaiResponse'));
 
             $response = $prompter->send('Bob', 'Evening');

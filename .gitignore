@@ -6,3 +6,5 @@ composer.phar
 # composer.lock
 coverage.xml
 site
+lcov/*
+!lcov/.gitkeep

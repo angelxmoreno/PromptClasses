@@ -26,13 +26,14 @@ abstract class AbstractPrompt
         'presence_penalty' => 0,
     ];
 
-    public function __construct(string $open_api_key)
+    public function __construct(string $openApiKey)
     {
-        $this->open_api_key = $open_api_key;
+        $this->open_api_key = $openApiKey;
         $this->assertTrueOrThrow(is_string($this->getPromptTpl()), '"$promptTpl" must be a string');
         $this->assertTrueOrThrow(trim($this->getPromptTpl()) <> '', '"$promptTpl" can not be empty');
         $this->assertTrueOrThrow(!empty($this->getPromptParams()), '"$promptParams" can not be empty');
     }
+
 
     protected function assertTrueOrThrow(bool $bool, string $message): void
     {

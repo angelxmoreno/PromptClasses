@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace PromptClasses\Test\Helpers;
 
+use UnexpectedValueException;
+
 class Fixture
 {
     public static function load(string $name): array
     {
         $path = self::nameToPath($name);
-        assert(is_file($path), new \UnexpectedValueException(sprintf(
+        assert(is_file($path), new UnexpectedValueException(sprintf(
             '"%s" is not a valid fixture. "%s" not found.',
             $name,
             $path

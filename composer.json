@@ -21,7 +21,9 @@
   ],
   "require": {
     "php": "^7.4",
-    "ext-json": "*"
+    "ext-json": "*",
+    "orhanerday/open-ai": "^4.7",
+    "cakephp/utility": "^4.4"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.7",

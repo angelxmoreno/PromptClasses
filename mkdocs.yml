@@ -1,5 +1,5 @@
 site_name: PromptClasses
-theme: readthedocs
+theme: litera
 
 nav:
   - Home: index.md
